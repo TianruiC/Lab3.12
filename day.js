@@ -3,7 +3,7 @@ dataP.then(function(data)
 {
   console.log("data",data)
   //console.log("data",data[0].grades)
-  drawGraph(data,800,600,0);
+  drawGraph(data,800,580,0);
 },
 function(err)
 {
@@ -24,7 +24,7 @@ var drawGraph=function(data,w,d,x)
   var margins=
   {
     top:20,
-    bottom:50,
+    bottom:30,
     left:35,
     right:70
   }
@@ -116,7 +116,7 @@ var updateGraph=function(data,w,d,x)
   var margins=
   {
     top:20,
-    bottom:50,
+    bottom:30,
     left:35,
     right:70
   }
@@ -166,10 +166,29 @@ var update=function(x)
   var day=d3.select("p");
   dataP.then(function(data)
   {
-    updateGraph(data,800,600,y);
+    updateGraph(data,800,580,y);
   },
   function(err)
   {
     console.log(err);
   })
+}
+var updates=function()
+{
+  var x=Number(document.getElementById("inputday").value);
+  if(x>0&&x<11&&(x%1==0))
+  {
+  var dataP=d3.json("day.json");
+  var day=d3.select("p");
+  dataP.then(function(data)
+  {
+    updateGraph(data,800,580,x);
+  },
+  function(err)
+  {
+    console.log(err);
+  })}
+  else{
+    window.alert("Please enter a day from 1-10 !")
+  }
 }
