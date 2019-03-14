@@ -163,7 +163,6 @@ var update=function(x)
   var y=document.getElementById("day").innerText;
   y=Number(y)+Number(x);
   var dataP=d3.json("day.json");
-  var day=d3.select("p");
   dataP.then(function(data)
   {
     updateGraph(data,800,580,y);
@@ -179,7 +178,6 @@ var updates=function()
   if(x>0&&x<11&&(x%1==0))
   {
   var dataP=d3.json("day.json");
-  var day=d3.select("p");
   dataP.then(function(data)
   {
     updateGraph(data,800,580,x);
